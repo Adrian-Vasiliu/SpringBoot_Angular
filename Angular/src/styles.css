@@ -1,0 +1,101 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  /*margin: 0;*/
+  margin: auto;
+  width: 60%;
+}
+
+nav {
+  /*background-color: darkred;*/
+  /*position: fixed;*/
+  /*top: 0;*/
+  width: 98.7%;
+  padding: 2px;
+}
+
+nav table {
+  width: 100%;
+}
+
+nav th {
+  padding: 6px;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: antiqueWhite;
+}
+
+nav th:hover {
+  /*  background-color: yellow;*/
+  animation-name: colorAnimation;
+  animation-duration: 2s;
+}
+
+@keyframes colorAnimation {
+  from {
+    background-color: lightPink;
+  }
+  to {
+    background-color: yellow;
+  }
+}
+
+nav a {
+  display: block;
+  text-decoration: none;
+  color: green;
+}
+
+.roleLink {
+  background-color: gold;
+}
+
+input[type=text], [type=password] {
+  width: 100%;
+  /*padding: 12px 20px;*/
+  padding: 6px 1px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.id {
+  display: inline-block;
+}
+
+.inputReadOnly {
+  border: 0 solid;
+  outline: none;
+}
+
+.item {
+  border: 2px solid black;
+  border-radius: 10px;
+  width: 60%;
+  padding-bottom: 20px;
+  padding-right: 20px;
+}
+
+.save-button {
+  padding-left: 40px;
+}

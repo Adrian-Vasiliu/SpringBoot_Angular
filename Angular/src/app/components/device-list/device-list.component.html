@@ -1,0 +1,85 @@
+<h1>Devices</h1>
+<button *ngIf="isAdmin" id="add-button" type="button" (click)="showCreateForm()">Add device</button>
+<div class="item" *ngIf="createForm">
+  <ul>
+    <h3 class="id">New device</h3>
+    <li><label for="deviceDescription"> Description: </label>
+      <input id="deviceDescription" type="text" [(ngModel)]="device.description" placeholder="description"></li>
+    <li><label for="deviceAddress">Address:</label>
+      <input id="deviceAddress" type="text" [(ngModel)]="device.address" placeholder="address"></li>
+    <li><label for="deviceConsumption">Maximum consumption per hour:</label>
+      <input id="deviceConsumption" type="text" [(ngModel)]="device.max_hourly_energy_consumption"></li>
+    <li><label for="userID">User ID:</label>
+      <input id="userID" type="text" [(ngModel)]="device.user"></li>
+  </ul>
+  <div class="save-button">
+    <button type="button" (click)="create(device)">Save device</button>
+  </div>
+</div>
+<br> <br>
+Items per page:
+<select (change)="handlePageSizeChange($event)">
+  <option *ngFor="let size of pageSizes" [ngValue]="size">{{size}}</option>
+</select>
+<br> <br>
+<div class="paginatedTableArea">
+  <table class="paginatedTable" mat-table [dataSource]="devices | paginate : {
+                  itemsPerPage: pageSize,
+                  currentPage: pageNumber,
+                  totalItems: totalItems}">
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef> Description</th>
+      <td mat-cell *matCellDef="let device">
+        <input class="inputReadOnly" id="device{{device.id}}-description" [(ngModel)]="device.description"
+               placeholder="description" readonly>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="address">
+      <th mat-header-cell *matHeaderCellDef> Address</th>
+      <td mat-cell *matCellDef="let device">
+        <input class="inputReadOnly" id="device{{device.id}}-address" [(ngModel)]="device.address"
+               placeholder="address" readonly>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="max_hourly_energy_consumption">
+      <th mat-header-cell *matHeaderCellDef>Max consumption</th>
+      <td mat-cell *matCellDef="let device">
+        <input class="inputReadOnly" id="device{{device.id}}-consumption"
+               [(ngModel)]="device.max_hourly_energy_consumption"
+               placeholder="consumption" readonly>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef>Edit</th>
+      <td mat-cell *matCellDef="let device">
+        <button *ngIf="isAdmin" type="button" id="edit-device{{device.id}}" (click)="showEditForm(device.id)">Edit</button>
+        <button hidden id="update-device{{device.id}}" type="button" (click)="updateDevice(device)">Update</button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef>Delete</th>
+      <td mat-cell *matCellDef="let device">
+        <button *ngIf="isAdmin" type="button" (click)="deleteDevice(device.id)">Delete</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="devicesColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: devicesColumns"></tr>
+  </table>
+<!--  <mat-paginator [pageSizeOptions]="[2, 4, 6]"-->
+<!--                 showFirstLastButtons-->
+<!--                 aria-label="Select page">-->
+<!--  </mat-paginator>-->
+</div>
+<div>
+  <pagination-controls
+    previousLabel="Prev"
+    nextLabel="Next"
+    [responsive]="true"
+    (pageChange)="handlePageChange($event)">
+  </pagination-controls>
+</div>

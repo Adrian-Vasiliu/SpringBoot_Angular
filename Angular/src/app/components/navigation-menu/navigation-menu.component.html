@@ -1,0 +1,40 @@
+<nav>
+  <table>
+    <tr>
+      <th>
+        <a href="#">Home</a>
+      </th>
+
+      <th>
+        <a routerLink="/devices">Devices</a>
+      </th>
+
+      <th>
+        <a routerLink="/users">Users</a>
+      </th>
+
+      <th *ngIf="loggedUser && !loggedUser.roles.length">
+        <a href="/login" routerLink="login">Login</a>
+      </th>
+      <th *ngIf="loggedUser && !loggedUser.roles.length">
+        <a href="/register" routerLink="register">Sign Up</a>
+      </th>
+
+      <th *ngIf="loggedUser && loggedUser.roles.includes('ROLE_MODERATOR')" class="roleLink">
+        <a href="/moderator" routerLink="moderator">Moderator Board</a>
+      </th>
+
+      <th *ngIf="loggedUser && loggedUser.roles.includes('ROLE_ADMIN')" class="roleLink">
+        <a href="/admin" routerLink="admin">Admin Board</a>
+      </th>
+
+      <th *ngIf="loggedUser && loggedUser.roles.length" class="roleLink">
+        <a routerLink="admin/profile">Profile</a>
+      </th>
+      <th *ngIf="loggedUser && loggedUser.roles.length">
+        <a href (click)="logout()">Log-out</a>
+      </th>
+
+    </tr>
+  </table>
+</nav>

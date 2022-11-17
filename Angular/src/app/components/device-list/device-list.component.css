@@ -1,0 +1,32 @@
+.deviceId {
+  display: inline-block;
+}
+
+.device {
+  border: 2px solid black;
+  border-radius: 10px;
+  width: 60%;
+  padding-bottom: 20px;
+}
+
+
+.mat-row .mat-cell {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+  cursor: pointer;
+}
+
+.mat-row:hover .mat-cell {
+  border-color: currentColor;
+}
+
+.paginatedTableArea {
+  overflow: auto;
+  width: 100%;
+  height: 40%;
+  border: 2px solid black;
+}
+
+table {
+  width: 100%;
+}
