@@ -1,6 +1,6 @@
 package org.springbootangular.service.implementation;
 
-import org.springbootangular.NotFoundException;
+import org.springbootangular.exception.NotFoundException;
 import org.springbootangular.service.GenericService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

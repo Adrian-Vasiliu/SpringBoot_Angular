@@ -1,4 +1,4 @@
-package org.springbootangular;
+package org.springbootangular.exception;
 
 public class NotFoundException extends RuntimeException {
     public NotFoundException(String message) {
