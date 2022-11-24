@@ -53,8 +53,13 @@ public class DeviceController {
                 .map(DeviceMapper::toDto).collect(toList()), HttpStatus.OK);
     }
 
+    @GetMapping("/{deviceId}")
+    public ResponseEntity<DeviceDTO> getById(@PathVariable long deviceId) {
+        return new ResponseEntity<>(DeviceMapper.toDto(deviceService.getById(deviceId)), HttpStatus.OK);
+    }
+
     @PostMapping("")
-    public ResponseEntity<DeviceDTO> create(@RequestBody DeviceDTO deviceDTO) {
+    public ResponseEntity<DeviceDTO> add(@RequestBody DeviceDTO deviceDTO) {
         Device device = DeviceMapper.toEntity(deviceDTO);
         return new ResponseEntity<>(DeviceMapper.toDto(deviceService.add(device)), HttpStatus.OK);
     }
