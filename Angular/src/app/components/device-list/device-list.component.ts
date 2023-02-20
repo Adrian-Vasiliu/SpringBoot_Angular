@@ -24,7 +24,15 @@ export class DeviceListComponent implements OnInit {
   createForm = false;
   isAdmin = false;
   devicesColumns = ['description', 'address', 'max_hourly_energy_consumption', 'edit', 'delete'];
-  devices: Device[] = [];
+  devices: Device[] = []
+    // {id: 1, description: 'device A', address: 'address1', max_hourly_energy_consumption: 14, user: 1, consumptions: []},
+    // {id: 2, description: 'device B', address: 'address2', max_hourly_energy_consumption: 35, user: 1, consumptions: []},
+    // {id: 3, description: 'device C', address: 'address3', max_hourly_energy_consumption: 20, user: 1, consumptions: []},
+    // {id: 25, description: 'device D', address: 'address4', max_hourly_energy_consumption: 41, user: 2, consumptions: []},
+    // {id: 26, description: 'device E', address: 'address5', max_hourly_energy_consumption: 12, user: 1, consumptions: []},
+    // {id: 28, description: 'device F', address: 'address6', max_hourly_energy_consumption: 16, user: 1, consumptions: []},
+    // {id: 29, description: 'device G', address: 'address7', max_hourly_energy_consumption: 14, user: 1, consumptions: []},
+    // {id: 31, description: 'device H', address: 'address8', max_hourly_energy_consumption: 17, user: 1, consumptions: []}];
   totalItems = 0;
   pageNumber = 1;
   pageSize = 3;
@@ -112,10 +120,6 @@ export class DeviceListComponent implements OnInit {
   getDevices(): void {
     const params = this.getParams(this.pageNumber, this.pageSize);
     this.deviceService.get(params).subscribe(page => {
-        // const {items, totalItems} = data;
-        // this.devices = items;
-        // this.totalItems = totalItems;
-        // console.log(data);
         this.devices = page.items;
         this.totalItems = page.totalItems;
       }

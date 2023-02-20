@@ -1,5 +1,3 @@
-import {Injectable} from "@angular/core";
-
 export class UserSession {
   id: number;
   username: string;
